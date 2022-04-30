@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Brain model</title>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>   
+        <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+        <script src = "./components/rise.js"></script>
+        <script src = "./components/zoom.js"></script>
+    </head>
+
+    <body>
+        <a-scene>
+            <a-sky src = "./images/skyimage.jpeg"></a-sky>
+
+            <a-assets>
+                <a-asset-item id = "brain" src = "./assets/brain/scene.gltf"></a-asset-item>
+                <a-asset-item id = "internal-brain" src = "./assets/internalbrain/scene.gltf"></a-asset-item>
+            </a-assets>
+
+            <a-plane
+                id="ground"
+                repeat="5 5"
+                position="0 1 0"
+                rotation="-90 0 0"
+                height="200"
+                width="200"
+                color="#25441B"
+                static-body
+                visible="true"
+                src = "./images/tiletexture.jpg"
+            >
+            </a-plane>
+
+            <a-entity id = "camera" camera position = "0 4 0" wasd-controls = "acceleration: 300" look-controls = "pointerLockEnabled: enabled" rise zoom>
+            </a-entity>
+
+            <a-entity id = "brainEl" gltf-model = "#brain" position = "0 3 -10" scale = "0.1 0.1 0.1"></a-entity>
+            <a-entity id = "internalBrainEl" gltf-model = "#internal-brain" position = "11 6 -10" scale = "7 7 7" rotation = "0 270 0"></a-entity>
+
+            <a-entity light = "type:ambient; intensity:2"></a-entity>
+
+        </a-scene>
+    </body>
+</html>
